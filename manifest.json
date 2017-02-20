@@ -6,7 +6,7 @@
   "version": "0.0",
 
   "permissions": [
-    "https://secure.flickr.com/"
+    "identity"
   ],
   "browser_action": {
     "default_icon": "infinibee19x19.png",

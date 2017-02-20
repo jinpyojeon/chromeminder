@@ -4,7 +4,7 @@
     <title>Hello World from Beeminder</title>
     <style>
       body {
-        min-width: 357px;
+        min-width: 300px;
         overflow-x: hidden;
       }
 
@@ -16,6 +16,11 @@
         height: 75px;
       }
     </style>
+
+    <form onsubmit="saveUsername()">
+      Username: <input type="text" name="username">
+      <input type="submit" value="submit">
+    </form>
 
     <!--
       - JavaScript and HTML must be in separate files: see our Content Security
