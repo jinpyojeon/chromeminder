@@ -10,7 +10,7 @@ function saveUsername() {
 var beeGenerator = {
 
 	requestDangerGoals_: 'https://beeminder.com/api/v1' + 
-						 '/users/aba1731.json' +
+						 '/users/aba1731/goals.json' +
 						 '?auth_token=R7qosphRUcKzV6Y36h4p'
 	,
 
@@ -38,13 +38,20 @@ var beeGenerator = {
 
 		var data = JSON.parse(e);
 
-		var goals = data.goals;
-
-		for (var i = 0; i < goals.length; i++) {
-			var goal = document.createElement("p");
-			goal.textContent = goals[i];
-			document.body.appendChild(goal);
+		for (var i = 0; i < data.length; i++) {
+			var goal_name = data[i].title;
+			if (data[i].limsumdays.search("days") == -1) {
+				var goal = document.createElement("h2");
+				goal.textContent = goal_name;
+				document.body.appendChild(goal);
+			}
 		}
+
+		// for (var i = 0; i < goals.length; i++) {
+		// 	var goal = document.createElement("p");
+		// 	goal.textContent = goals[i];
+		// 	document.body.appendChild(goal);
+		// }
 
 		// var bees = e.target.responseXML.querySelectorAll('photo');
 		// for(var i = 0; i < bees.length; i++) {
@@ -55,14 +62,6 @@ var beeGenerator = {
 		// }
 	},
 
-	// Given a photo, construct a URL...
-	constructBeeURL_: function(photo) {
-		return "http://farm" + photo.getAttribute("farm") +
-			".static.flickr.com/" + photo.getAttribute("server") +
-			"/" + photo.getAttribute("id") +
-			"_" + photo.getAttribute("secret") +
-			"_s.jpg";
-	}
 };
 
 // Run bee generation script as soon as the document's DOM is ready.
