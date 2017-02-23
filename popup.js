@@ -9,6 +9,11 @@ function saveUsername() {
 
 var beeGenerator = {
 
+	createAlarm: function() {
+		chrome.alarms.create("hourly", periodInMinutes=60);
+		chrome.alarms.onAlarm.addListener(beeGenerator.showGoals_);
+	},
+
 	requestDangerGoals_: 'https://beeminder.com/api/v1' + 
 						 '/users/aba1731/goals.json' +
 						 '?auth_token=R7qosphRUcKzV6Y36h4p'
@@ -66,5 +71,6 @@ var beeGenerator = {
 
 // Run bee generation script as soon as the document's DOM is ready.
 document.addEventListener('DOMContentLoaded', function() {
+	beeGenerator.createAlarm();
 	beeGenerator.requestBees();
 });
